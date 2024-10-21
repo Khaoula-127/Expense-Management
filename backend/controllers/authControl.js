@@ -17,6 +17,8 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log('Username:', username);  // Log to verify
+    console.log('Password:', password);  // Log to verify
     const user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json({ error: 'User not found' });
