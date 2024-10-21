@@ -3,8 +3,17 @@ import styled from 'styled-components'
 import avatar from '../../img/gb.png'
 import { logout, signout } from '../../utils/icons'
 import { menuitems } from '../../utils/menuitems'
+import { useNavigate } from 'react-router-dom'
 
 function Navigation({active, setActive}) {
+
+    const navigate = useNavigate(); 
+
+    
+    const logout = () => {
+        // logout logic
+        navigate('/login');
+    };
     
     return (
         <NavStyled>
@@ -28,9 +37,9 @@ function Navigation({active, setActive}) {
                 })}
             </ul>
             <div className="bottom-nav">
-                <li onClick={logout}>
+                <button onClick={logout} className="signout-btn">
                     {signout} Sign Out
-                </li>
+                </button>
             </div>
         </NavStyled>
     )
@@ -109,6 +118,19 @@ const NavStyled = styled.nav`
             border-radius: 0 10px 10px 0;
         }
     }
+    .signout-btn {
+        background-color: #FF5733; /* Change as needed */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px; 
+    }
+    
+    .signout-btn:hover {
+        background-color: #c00; 
+    }
+    
 
    
 `;
